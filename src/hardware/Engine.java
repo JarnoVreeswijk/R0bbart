@@ -26,14 +26,6 @@ public class Engine implements Updatable {
 		this.motorStateChange = motorStateChange;
 	}
 
-	public void setServoSpeed(int input){
-		this.s1.update(input);
-	}
-
-	public void setSpeedGoal(int input){
-		this.doelSnelheid = input;
-	}
-
 	public void update() {
 		if(timer.timeout()) {
 			if (this.snelheid != this.doelSnelheid) {
@@ -44,7 +36,6 @@ public class Engine implements Updatable {
 					this.snelheid += 10;
 					this.s1.update(snelheid+1500);
 				}
-
 				if(this.snelheid == this.doelSnelheid) {
 					motorStateChange.onMotorAtSpeed(this.snelheid);
 				}
@@ -72,19 +63,32 @@ public class Engine implements Updatable {
 	}
 
 	public void forward(){
-			this.doelSnelheid = 50;
+		//Setting the speed at 50.
+		this.doelSnelheid = 50;
 	}
 
 	public void backwards(){
-			this.doelSnelheid = -50;
+		// Setting the speed at -50.
+		this.doelSnelheid = -50;
 	}
 
 	public void stop() {
+		// First check if the speed is not 0, then changing it to 0.
+		// Else display a console message.
 		if(this.doelSnelheid != 0){
 			this.doelSnelheid = 0;
-			//this.s1.update(1500);
 		} else {
-			System.out.println("You cant stop moving if you aint moving!");
+			System.out.println("You cant stop moving if you ain't moving!");
+		}
+	}
+
+	public void emergencyStop(){
+		// First check what the speed is, if it isnt 0 then brake instantly
+		// Else display a console message.
+		if(this.doelSnelheid != 0){
+			this.snelheid = 0;
+			this.doelSnelheid = 0;
+			s1.update(1500);
 		}
 	}
 
