@@ -72,7 +72,7 @@ public class DriveManagement implements MotorStateChange {
             case "slower":
                 System.out.println("[ Ah, but i want to go as fast as i can. :frowning: ]");
                 slowDown(movementState);
-            case "":
+            case "intastStop":
                 System.out.println("[ Stopped your ass instant! ]");
                 stopDrivingInstant();
         }
