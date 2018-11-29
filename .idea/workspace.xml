@@ -240,8 +240,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="661" />
-    <option name="y" value="346" />
+    <option name="x" value="660" />
+    <option name="y" value="345" />
     <option name="width" value="1940" />
     <option name="height" value="1060" />
   </component>
@@ -285,7 +285,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543420090129" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Github/Test Repo/Test Repo" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
