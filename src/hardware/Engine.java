@@ -10,8 +10,10 @@ import TI.Timer;
  *
  */
 
+// Class opening with implementation.
 public class Engine implements Updatable {
 
+	// Declaring the following variables.
 	private MotorStateChange motorStateChange;
 	private int snelheid;
 	private int doelSnelheid;
@@ -19,6 +21,7 @@ public class Engine implements Updatable {
 	private Servo s1;
 
 	public Engine(int pin, MotorStateChange motorStateChange) {
+		// This gives an engine the following properties.
 		this.s1= new Servo(pin);
 		this.snelheid = 0;
 		this.doelSnelheid = 0;
@@ -27,6 +30,7 @@ public class Engine implements Updatable {
 	}
 
 	public void update() {
+		// Checking if the timer has ended.
 		if(timer.timeout()) {
 			if (this.snelheid != this.doelSnelheid) {
 				if (this.snelheid > this.doelSnelheid) {
@@ -47,6 +51,8 @@ public class Engine implements Updatable {
 	}
 
 	public void accelerate(){
+		// Checking if the speed inst already 50, if not then speed +50.
+		// Else display an error message in the console.
 		if(this.doelSnelheid != 150){
 			this.doelSnelheid += 50;
 		} else {
@@ -55,6 +61,8 @@ public class Engine implements Updatable {
 	}
 
 	public void slowdown(){
+		// Checking if the speed inst already 50, if not then speed -50.
+		// Else display an error message in the console.
 		if(this.doelSnelheid != 50){
 			this.doelSnelheid -= 50;
 		} else {
@@ -74,7 +82,7 @@ public class Engine implements Updatable {
 
 	public void stop() {
 		// First check if the speed is not 0, then changing it to 0.
-		// Else display a console message.
+		// Else display an error message in the console.
 		if(this.doelSnelheid != 0){
 			this.doelSnelheid = 0;
 		} else {
@@ -84,7 +92,7 @@ public class Engine implements Updatable {
 
 	public void emergencyStop(){
 		// First check what the speed is, if it isnt 0 then brake instantly
-		// Else display a console message.
+		// Else display an error message in the console.
 		if(this.doelSnelheid != 0){
 			this.snelheid = 0;
 			this.doelSnelheid = 0;
