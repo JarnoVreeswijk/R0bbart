@@ -20,7 +20,7 @@ public class DriveManagement implements MotorStateChange {
     private String movementState = "";
     private boolean isMoving = false;
     private ArrayList<Updatable> updatables = new ArrayList<>();
-    private boolean cantDriveForward = false;
+    private int cantDriveForward = 501;
     private boolean hasStopped = false;
 
     public DriveManagement() {
@@ -34,20 +34,20 @@ public class DriveManagement implements MotorStateChange {
         }
     }
 
-    public void CollisionReceiver(boolean input) {
+    public void CollisionReceiver(int input) {
         this.cantDriveForward = input;
-        if (cantDriveForward) {
+        if (this.cantDriveForward < 500) {
             stopEngine();
         }
     }
 
-    public void Receiver(String input, int checkedFront) {
+    public void Receiver(String input) {
         if (input.equals("back")) {
             System.out.println("[ Moving backwards ]");
             moveBackwards();
             this.hasStopped = false;
         } else {
-            if (!cantDriveForward) {
+            if (!(this.cantDriveForward < 500)) {
                 if (input.equals("forward")) {
                     System.out.println("[ Moving forward ]");
                     moveForward();
@@ -57,15 +57,21 @@ public class DriveManagement implements MotorStateChange {
                 } else if (input.equals("left")) {
                     System.out.println("[ Making a left turn ]");
                     moveLeft();
+                } else if (input.equals("sharprigth")) {
+                    System.out.println("[ Making a sharp right turn ]");
+                    sharpRight();
+                } else if (input.equals("sharpleft")) {
+                    System.out.println("[ Making a sharp left turn ]");
+                    sharpLeft();
                 }
             }
 
             if (input.equals("faster")) {
                 System.out.println("[ Gotta go fast! ]");
-                speedUp(movementState);
+                speedUp(this.movementState);
             } else if (input.equals("slower")) {
                 System.out.println("[ Ah, but i want to go as fast as i can. :frowning: ]");
-                slowDown(movementState);
+                slowDown(this.movementState);
             } else if (input.equals("stop")) {
                 System.out.println("[ Stop!?, i'm not an old lady ]");
                 stopEngine();
@@ -75,73 +81,85 @@ public class DriveManagement implements MotorStateChange {
     }
 
     public void stopEngine() {
-        engineRight.setSpeedGoal(0);
-        engineLeft.setSpeedGoal(0);
-        engineRight.setServoSpeed(1500);
-        engineLeft.setServoSpeed(1500);
-        isMoving = false;
+        this.engineRight.setSpeedGoal(0);
+        this.engineLeft.setSpeedGoal(0);
+        this.engineRight.setServoSpeed(1500);
+        this.engineLeft.setServoSpeed(1500);
+        this.isMoving = false;
     }
 
     private void slowDown(String input) {
         if (input.equals("forward")) {
-            engineRight.slowdown();
-            engineLeft.accelerate();
+            this.engineRight.slowdown();
+            this.engineLeft.accelerate();
         }
         if (input.equals("backwards")) {
-            engineRight.accelerate();
-            engineLeft.slowdown();
+            this.engineRight.accelerate();
+            this.engineLeft.slowdown();
         }
     }
 
     private void speedUp(String input) {
         if (input.equals("forward")) {
-            engineRight.accelerate();
-            engineLeft.slowdown();
+            this.engineRight.accelerate();
+            this.engineLeft.slowdown();
         }
         if (input.equals("backwards")) {
-            engineRight.slowdown();
-            engineLeft.accelerate();
+            this.engineRight.slowdown();
+            this.engineLeft.accelerate();
         }
     }
 
     private void moveForward() {
-        movementState = "forward";
-        System.out.println(isMoving);
-        if (isMoving) {
-            engineRight.stop();
-            engineLeft.stop();
-            engineRight.backwards();
-            engineLeft.forward();
+        this.movementState = "forward";
+        System.out.println(this.isMoving);
+        if (this.isMoving) {
+            this.engineRight.stop();
+            this.engineLeft.stop();
+            this.engineRight.backwards();
+            this.engineLeft.forward();
         } else {
-            engineRight.backwards();
-            engineLeft.forward();
-            isMoving = true;
+            this.engineRight.backwards();
+            this.engineLeft.forward();
+            this.isMoving = true;
         }
     }
 
     private void moveRight() {
-        engineRight.stop();
-        engineLeft.forward();
-        isMoving = true;
+        this.engineRight.stop();
+        this.engineLeft.forward();
+        this.isMoving = true;
+    }
+
+    private void sharpRight() {
+        this.engineRight.forward();
+        this.engineLeft.forward();
+        this.isMoving = true;
     }
 
     private void moveLeft() {
-        engineLeft.stop();
-        engineRight.backwards();
-        isMoving = true;
+        this.engineLeft.stop();
+        this.engineRight.backwards();
+        this.isMoving = true;
+    }
+
+    private void sharpLeft() {
+        this.engineRight.backwards();
+        this.engineLeft.backwards();
+        this.isMoving = true;
     }
 
     private void moveBackwards() {
-        if (isMoving) {
+        if (this.isMoving) {
             stopEngine();
-            movementState = "backwards";
-            engineLeft.backwards();
-            engineRight.forward();
+            this.movementState = "backwards";
+            this.engineLeft.backwards();
+            this.engineRight.forward();
 
         } else {
-            engineRight.forward();
-            engineLeft.backwards();
-            isMoving = true;
+            this.engineRight.forward();
+            this.engineLeft.backwards();
+            this.isMoving = true;
         }
     }
 

@@ -6,22 +6,15 @@ import hardware.Updatable;
 
 import java.sql.Time;
 
-public class Ultrasone implements Updatable {
+public class Ultrasone {
 
-    private Timer timer;
-    private Timer pulseOff;
-    private UltrasoneDetectie onDetect;
     private int readPin;
     private int writePin;
-    private boolean pulseTimerOn;
+    private int pulse;
 
     public Ultrasone(int writePin, int readPin) {
-        this.timer = new Timer(100);
-        this.pulseOff = new Timer(1);
-        this.onDetect = onDetect;
         this.readPin = readPin;
         this.writePin = writePin;
-        this.pulseTimerOn = false;
     }
 
 
@@ -29,9 +22,12 @@ public class Ultrasone implements Updatable {
         BoeBot.digitalWrite(this.writePin, true);
         BoeBot.wait(0,500);
         BoeBot.digitalWrite(this.writePin, false);
-        //System.out.println(BoeBot.pulseIn(this.readPin, true, 10000));
-        return BoeBot.pulseIn(this.readPin, true, 10000);
+        System.out.println(BoeBot.pulseIn(this.readPin, true, 10000));
+        this.pulse = BoeBot.pulseIn(this.readPin, true, 10000);
+        if(this.pulse < 0) {
+            System.out.println(" The ultrasone sensor is not working. ");
+        }
+        return this.pulse;
     }
 
-    public void update() {}
 }

@@ -1,6 +1,6 @@
 package Interface;
 
-        import hardware.Ultrasone;
+import hardware.Ultrasone;
 
 public class CollisionDetection {
 

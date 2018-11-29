@@ -1,7 +1,8 @@
 package Interface;
 
 import hardware.Remotecontrol;
-import hardware.UpdatableControl;
+
+import java.util.HashMap;
 
 public class Control {
 
@@ -15,14 +16,26 @@ public class Control {
     private int faster;
     private int slower;
 
-    private UpdatableControl checkConection;
+    private Remotecontrol checkConection;
+    HashMap<Integer, String> movementToString = new HashMap<>();
 
     public Control(int forward, int right, int sharpright, int back, int sharpleft, int left, int stop, int faster, int slower) {
-        this.checkConection = new Remotecontrol(this.forward = forward, this.right = right, this.sharpright = sharpright, this.back = back, this.sharpleft = sharpleft, this.left = left, this.stop = stop, this.faster = faster, this.slower = slower);
+        movementToString.put(this.forward = forward, "forward");
+        movementToString.put(this.right = right, "right");
+        movementToString.put(this.sharpright = sharpright, "sharpright");
+        movementToString.put(this.back = back, "back");
+        movementToString.put(this.sharpleft = sharpleft, "sharpleft");
+        movementToString.put(this.left = left, "left");
+        movementToString.put(this.stop = stop, "stop");
+        movementToString.put(this.faster = faster, "faster");
+        movementToString.put(this.slower = slower, "slower");
     }
 
     public String movementValuePusher() {
-       // System.out.println(checkConection.getValue());
-        return checkConection.getValue();
+        if(movementToString.containsKey(checkConection.getValue())) {
+            return movementToString.get(checkConection.getValue());
+        } else {
+            return "The infrared sensor returns a false value. ";
+        }
     }
 }
