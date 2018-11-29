@@ -5,31 +5,10 @@ import TI.BoeBot;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Remotecontrol implements UpdatableControl {
-    private int forward;
-    private int right;
-    private int sharpright;
-    private int back;
-    private int sharpleft;
-    private int left;
-    private int stop;
-    private int faster;
-    private int slower;
-    HashMap<Integer, String> movementToString = new HashMap<>();
+public class Remotecontrol {
 
-    private int lengthes[] = new int[12];
-    private int pulseLen = BoeBot.pulseIn(3, false, 6000);
+    public Remotecontrol() {
 
-    public Remotecontrol(int forward, int right, int sharpright, int back, int sharpleft, int left, int stop, int faster, int slower) {
-        movementToString.put(this.forward = forward, "forward");
-        movementToString.put(this.right = right, "right");
-        movementToString.put(this.sharpright = sharpright, "sharpright");
-        movementToString.put(this.back = back, "back");
-        movementToString.put(this.sharpleft = sharpleft, "sharpleft");
-        movementToString.put(this.left = left, "left");
-        movementToString.put(this.stop = stop, "stop");
-        movementToString.put(this.faster = faster, "faster");
-        movementToString.put(this.slower = slower, "slower");
     }
 
     public int toNumber(ArrayList<Integer> list) {
@@ -50,8 +29,7 @@ public class Remotecontrol implements UpdatableControl {
         return output;
     }
 
-    @Override
-    public String getValue() {
+    public int getValue() {
         ArrayList<Integer> binaryCodeButton = new ArrayList<>();
         for (int k = 0; k < 12; k++) {
             int pulseLen = BoeBot.pulseIn(3, false, 6000);
@@ -72,38 +50,11 @@ public class Remotecontrol implements UpdatableControl {
             }
         }
         if (toNumber(binaryCodeButton) == 0) {
-            return "";
+            return 0;
         } else {
             //System.out.println(this.movementToString.get(toNumber(binaryCodeButton)));
-            return this.movementToString.get(toNumber(binaryCodeButton));
+            return toNumber(binaryCodeButton);
         }
     }
 
-
-    //------------------------------------------------------------------------------------------
-
-
-    public String getValueWrong() {
-        ArrayList<Integer> binaryCodeButton = new ArrayList<>();
-        if (this.pulseLen > 2000) {
-            for (int i = 0; i < 12; i++) {
-                System.out.println(this.lengthes[i] = BoeBot.pulseIn(3, false, 20000));
-            }
-            for (int i = 0; i < 12; i++) {
-                if (this.lengthes[i] > 1000) {
-                    binaryCodeButton.add(1);
-                } else {
-                    if (this.lengthes[i] > 100) {
-                        binaryCodeButton.add(0);
-                    }
-                }
-            }
-        }
-        if (this.movementToString.containsKey(toNumber(binaryCodeButton))) {
-            System.out.println(this.movementToString.get(toNumber(binaryCodeButton)));
-            return this.movementToString.get(toNumber(binaryCodeButton));
-        }
-        binaryCodeButton.clear();
-        return "Null";
-    }
 }
