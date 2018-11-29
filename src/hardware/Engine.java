@@ -6,7 +6,7 @@ import TI.Timer;
 /**
  * @author Daan Pierik
  *
- * This class is the controller for a servo engine
+ * This class is the controller for a servo engine.
  *
  */
 
