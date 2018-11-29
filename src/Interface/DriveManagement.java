@@ -47,7 +47,7 @@ public class DriveManagement implements MotorStateChange {
             moveBackwards();
             this.hasStopped = false;
         } else {
-            if (!this.cantDriveForward) {
+            if (!(this.cantDriveForward < 500)) {
                 if (input.equals("forward")) {
                     System.out.println("[ Moving forward ]");
                     moveForward();
