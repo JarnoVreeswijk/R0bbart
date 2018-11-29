@@ -7,7 +7,5 @@ public class Main {
 		 	robot.step();
 			BoeBot.wait(1);
 		}
-		//System.out.println("Test");
 	}
-
 }
