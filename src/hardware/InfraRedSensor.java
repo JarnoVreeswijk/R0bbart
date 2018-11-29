@@ -7,8 +7,10 @@ import java.util.HashMap;
 
 public class InfraRedSensor {
 
-    public InfraRedSensor() {
+    private int readPin;
 
+    public InfraRedSensor(int readPin) {
+        this.readPin = readPin;
     }
 
     public int toNumber(ArrayList<Integer> list) {
@@ -32,11 +34,11 @@ public class InfraRedSensor {
     public int getValue() {
         ArrayList<Integer> binaryCodeButton = new ArrayList<>();
         for (int k = 0; k < 12; k++) {
-            int pulseLen = BoeBot.pulseIn(3, false, 6000);
+            int pulseLen = BoeBot.pulseIn(this.readPin, false, 6000);
             if (pulseLen > 2000) {
                 int lenghtes[] = new int[12];
                 for (int i = 0; i < 12; i++) {
-                    lenghtes[i] = BoeBot.pulseIn(3, false, 20000);
+                    lenghtes[i] = BoeBot.pulseIn(this.readPin, false, 20000);
                 }
                 for (int i = 0; i < 12; i++) {
                     if (lenghtes[i] > 1000) {

@@ -20,7 +20,7 @@ public class Control {
     private InfraRedSensor checkConection;
     HashMap<Integer, String> movementToString = new HashMap<>();
 
-    public Control(int forward, int right, int sharpright, int back, int sharpleft, int left, int stop, int faster, int slower, int instantStop) {
+    public Control(int readpin, int forward, int right, int sharpright, int back, int sharpleft, int left, int stop, int faster, int slower, int instantStop) {
         movementToString.put(this.forward = forward, "forward");
         movementToString.put(this.right = right, "right");
         movementToString.put(this.sharpright = sharpright, "sharpright");
@@ -31,6 +31,7 @@ public class Control {
         movementToString.put(this.faster = faster, "faster");
         movementToString.put(this.slower = slower, "slower");
         movementToString.put(this.instantStop = instantStop, "instantStop");
+        checkConection = new InfraRedSensor(readpin);
     }
 
     public String movementValuePusher() {
