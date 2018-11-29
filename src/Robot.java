@@ -24,7 +24,7 @@ public class Robot {
             DM.Receiver(RC.movementValuePusher());
         }
         if (US.checkFront() > 0) {
-            DM.
+            DM.CollisionReceiver(US.checkFront());
         }
     }
 }

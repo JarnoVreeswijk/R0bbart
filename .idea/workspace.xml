@@ -3,13 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="187c8328-90d8-40e6-a877-560f9e9f9eb4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RobotInterfaceDemo/Interface/DriveManagement.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RobotInterfaceDemo/Interface/DriveManagement.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RobotInterfaceDemo/Robot.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RobotInterfaceDemo/Robot.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RobotInterfaceDemo/hardware/Ultrasone.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RobotInterfaceDemo/hardware/Ultrasone.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interface/CollisionDetection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/CollisionDetection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Interface/DriveManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/DriveManagement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Robot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hardware/Ultrasone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hardware/Ultrasone.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -125,12 +120,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="363" />
+          <entry key="java" value="390" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="363" />
+          <entry key="JAVA" value="390" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -203,8 +198,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Robot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" column="48" lean-forward="true" selection-start-line="23" selection-start-column="48" selection-end-line="23" selection-end-column="48" />
+            <state relative-caret-position="442">
+              <caret line="26" column="33" selection-start-line="26" selection-start-column="33" selection-end-line="26" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -212,8 +207,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Interface/DriveManagement.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="333">
-              <caret line="43" column="37" selection-start-line="43" selection-start-column="37" selection-end-line="43" selection-end-column="37" />
+            <state relative-caret-position="384">
+              <caret line="38" column="42" lean-forward="true" selection-start-line="38" selection-start-column="42" selection-end-line="38" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#DriveManagement#0;class#DriveManagement#0" />
@@ -332,7 +327,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543485930519" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543486475499" />
     <property name="last_opened_file_path" value="D:/Github/Test Repo/Test Repo" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
@@ -537,13 +532,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Interface/CollisionDetection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/hardware/Ultrasone.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
@@ -553,15 +541,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Robot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="48" lean-forward="true" selection-start-line="23" selection-start-column="48" selection-end-line="23" selection-end-column="48" />
+        <state relative-caret-position="442">
+          <caret line="26" column="33" selection-start-line="26" selection-start-column="33" selection-end-line="26" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Interface/CollisionDetection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Interface/DriveManagement.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="43" column="37" selection-start-line="43" selection-start-column="37" selection-end-line="43" selection-end-column="37" />
+        <state relative-caret-position="384">
+          <caret line="38" column="42" lean-forward="true" selection-start-line="38" selection-start-column="42" selection-end-line="38" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#DriveManagement#0;class#DriveManagement#0" />

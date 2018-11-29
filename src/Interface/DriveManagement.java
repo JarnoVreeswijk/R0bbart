@@ -20,7 +20,7 @@ public class DriveManagement implements MotorStateChange {
     private String movementState = "";
     private boolean isMoving = false;
     private ArrayList<Updatable> updatables = new ArrayList<>();
-    private boolean cantDriveForward = false;
+    private int cantDriveForward = 501;
     private boolean hasStopped = false;
 
     public DriveManagement() {
@@ -34,9 +34,9 @@ public class DriveManagement implements MotorStateChange {
         }
     }
 
-    public void CollisionReceiver(boolean input) {
+    public void CollisionReceiver(int input) {
         this.cantDriveForward = input;
-        if (this.cantDriveForward) {
+        if (this.cantDriveForward < 500) {
             stopEngine();
         }
     }
