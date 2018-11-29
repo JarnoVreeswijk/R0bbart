@@ -41,7 +41,7 @@ public class DriveManagement implements MotorStateChange {
         }
     }
 
-    public void Receiver(String input, int checkedFront) {
+    public void Receiver(String input) {
         if (input.equals("back")) {
             System.out.println("[ Moving backwards ]");
             moveBackwards();

@@ -12,16 +12,19 @@ public class Robot {
     }
 
     public void step() {
-        if (US.checkFront() <= 500) {
-            DM.CollisionReceiver(true);
+        //if (US.checkFront() <= 500) {
+        //    DM.CollisionReceiver(true);
             //System.out.println("[ Toet Toet! Get out of the way! ]");
-        } else {
-            DM.CollisionReceiver(false);
-        }
+        //} else {
+         //   DM.CollisionReceiver(false);
+        //}
 
         DM.updateEngines();
-        if (!RC.movementValuePusher().equals("")) {
-            DM.Receiver(RC.movementValuePusher(), US.checkFront());
+        if (!(RC.movementValuePusher().equals(""))) {
+            DM.Receiver(RC.movementValuePusher());
+        }
+        if (US.checkFront() > 0) {
+            DM.
         }
     }
 }
