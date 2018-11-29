@@ -21,7 +21,6 @@ public class DriveManagement implements MotorStateChange {
     private boolean isMoving = false;
     private ArrayList<Updatable> updatables = new ArrayList<>();
     private boolean cantDriveForward = false;
-    private boolean hasStopped = false;
     private int oneButtonpress = 0;
 
     public DriveManagement() {
@@ -37,61 +36,50 @@ public class DriveManagement implements MotorStateChange {
 
     public void CollisionReceiver(boolean input) {
         this.cantDriveForward = input;
-        if (cantDriveForward && oneButtonpress ==0) {
-            stopDriving();
+        if (cantDriveForward && oneButtonpress == 0) {
+            stopDrivingInstant();
             oneButtonpress = 1;
         }
-        if(!cantDriveForward){
+        if (!cantDriveForward) {
             oneButtonpress = 0;
         }
     }
 
-    public void Receiver(String input, int checkedFront) {
-        if (input.equals("back")) {
-            System.out.println("[ Moving backwards ]");
-            moveBackwards();
-            this.hasStopped = false;
-        } else {
-            if (!cantDriveForward) {
-                switch (input){
-                    case "forward":
-                        System.out.println("[ Moving forward ]");
-                        moveForward();
-                    case "right":
-                        System.out.println("[ Making a right turn ]");
-                        moveRight();
-                    case "left":
-                        System.out.println("[ Making a left turn ]");
-                        moveLeft();
-                }
-
-                if (input.equals("forward")) {
+    public void Receiver(String input) {
+        if (!cantDriveForward) {
+            switch (input) {
+                case "forward":
                     System.out.println("[ Moving forward ]");
                     moveForward();
-                } else if (input.equals("right")) {
+                case "right":
                     System.out.println("[ Making a right turn ]");
                     moveRight();
-                } else if (input.equals("left")) {
+                case "left":
                     System.out.println("[ Making a left turn ]");
                     moveLeft();
-                }
-            }
-
-            if (input.equals("faster")) {
-                System.out.println("[ Gotta go fast! ]");
-                speedUp(movementState);
-            } else if (input.equals("slower")) {
-                System.out.println("[ Ah, but i want to go as fast as i can. :frowning: ]");
-                slowDown(movementState);
-            } else if (input.equals("stop")) {
-                System.out.println("[ Stop!?, i'm not an old lady ]");
-                stopDriving();
             }
         }
-
+        switch (input) {
+            case "backwards":
+                System.out.println("[ Moving backwards ]");
+                moveBackwards();
+            case "stop":
+                System.out.println("[ Stop!?, i'm not an old lady ]");
+                stopDriving();
+            case "faster":
+                System.out.println("[ Gotta go fast! ]");
+                speedUp(movementState);
+            case "slower":
+                System.out.println("[ Ah, but i want to go as fast as i can. :frowning: ]");
+                slowDown(movementState);
+            case "":
+                System.out.println("[ Stopped your ass instant! ]");
+                stopDrivingInstant();
+        }
     }
 
-    private void stopDrivingInstant(){
+
+    private void stopDrivingInstant() {
         engineRight.emergencyStop();
         engineLeft.emergencyStop();
         isMoving = false;
@@ -129,8 +117,6 @@ public class DriveManagement implements MotorStateChange {
         movementState = "forward";
         System.out.println(isMoving);
         if (isMoving) {
-            engineRight.stop();
-            engineLeft.stop();
             engineRight.backwards();
             engineLeft.forward();
         } else {
@@ -141,15 +127,23 @@ public class DriveManagement implements MotorStateChange {
     }
 
     private void moveRight() {
-        engineRight.stop();
-        engineLeft.forward();
-        isMoving = true;
+        if (isMoving) {
+            engineRight.stop();
+            engineLeft.forward();
+        } else {
+            engineLeft.forward();
+            isMoving = true;
+        }
     }
 
     private void moveLeft() {
-        engineLeft.stop();
-        engineRight.backwards();
-        isMoving = true;
+        if (isMoving) {
+            engineRight.stop();
+            engineRight.backwards();
+        } else {
+            engineRight.backwards();
+            isMoving = true;
+        }
     }
 
     private void moveBackwards() {
@@ -158,7 +152,6 @@ public class DriveManagement implements MotorStateChange {
             movementState = "backwards";
             engineLeft.backwards();
             engineRight.forward();
-
         } else {
             engineRight.forward();
             engineLeft.backwards();
