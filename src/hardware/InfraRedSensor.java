@@ -5,9 +5,9 @@ import TI.BoeBot;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Remotecontrol {
+public class InfraRedSensor {
 
-    public Remotecontrol() {
+    public InfraRedSensor() {
 
     }
 

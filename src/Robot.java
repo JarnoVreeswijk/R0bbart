@@ -7,7 +7,7 @@ public class Robot {
 
     public Robot() {
         this.DM = new DriveManagement();
-        this.RC = new Control(2, 3, 6, 8, 4, 1, 5, 17, 14);
+        this.RC = new Control(2, 3, 6, 8, 4, 1, 5, 17, 14, 30);
         this.US = new CollisionDetection(1, 2);
     }
 

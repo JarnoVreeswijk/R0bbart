@@ -1,11 +1,12 @@
 package Interface;
 
-import hardware.Remotecontrol;
+import hardware.InfraRedSensor;
 
 import java.util.HashMap;
 
 public class Control {
 
+    private int instantStop;
     private int forward;
     private int right;
     private int sharpright;
@@ -16,10 +17,10 @@ public class Control {
     private int faster;
     private int slower;
 
-    private Remotecontrol checkConection;
+    private InfraRedSensor checkConection;
     HashMap<Integer, String> movementToString = new HashMap<>();
 
-    public Control(int forward, int right, int sharpright, int back, int sharpleft, int left, int stop, int faster, int slower) {
+    public Control(int forward, int right, int sharpright, int back, int sharpleft, int left, int stop, int faster, int slower, int instantStop) {
         movementToString.put(this.forward = forward, "forward");
         movementToString.put(this.right = right, "right");
         movementToString.put(this.sharpright = sharpright, "sharpright");
@@ -29,6 +30,7 @@ public class Control {
         movementToString.put(this.stop = stop, "stop");
         movementToString.put(this.faster = faster, "faster");
         movementToString.put(this.slower = slower, "slower");
+        movementToString.put(this.instantStop = instantStop, "instantStop");
     }
 
     public String movementValuePusher() {
